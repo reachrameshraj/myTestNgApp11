@@ -1,0 +1,101 @@
+Introduction
+Installation
+creating app "creating 'ng new [projectName]'"
+
+variable
+data binding
+templates
+template expression: -> {{title}}
+Angular life cycle hooks: -> ngOnInit, ngOnViewInit....
+import/ export
+
+components: -> ng g c [componentName]
+modules: -> ng g m [moduleName]
+services: -> ng g s [serviceName]
+directives: -> ng g d [deractiveName]
+pipes: -> ng g p [pipeName]
+
+routing :   1. create component
+            2. configure path in app.routing.module.ts
+            3. create <a> tag with routerLink: Ex <a routerLink="home">Home</a> 
+
+path:men={"home"compunent:homecompunent} 
+
+if : <div *ngIf="a == b"></div> <else ee;<ng-tamplate></ng-tamplate>
+for:<div *ngFor="let e of [1,2,3,4,5,6,]"> {{e}}</div>
+ng-template
+switch =<div [ngSwitch]="userRole">
+    <button *ngSwitchCase="'admin'">Full Access</button>
+    <button *ngSwitchCase="'user'">Restricted Access</button>
+    <button *ngSwitchDefault>No Access</button>
+</div>
+
+****************************************
+ngClass
+<div [ngClass]="{'big' : boxSize === 'big', 'small': boxSize=== 'small', 'extra-small': boxSize === 'extra-small'}">hello</div>
+
+<div class="box {{userRole === 'admin' ? 'green-box' : userRole === 'agent' ? 'blue-box' : userRole === 'user' ? 'yellow-box' : 'red-box'}}">Hello World</div>
+
+
+if(userRole === 'admin'){
+    class = 'green-box'
+}else if(userRole === 'agent'){
+    class = 'blue-box'
+}else if(userRole === 'user'){
+    class = 'yellow-box'
+}else
+    class = 'red-box'  
+}
+
+
+********************************
+
+ngStyle
+
+<div class="box" [ngStyle]="{color:'red', fontSize: '25px'}">Hello World</div>
+<div class="box" [style.color]="userRole === 'admin' ? 'red' : userRole === 'user' ? 'yellow' : 'blue'">Hello World</div>
+
+***********************
+
+Other property binding: img:src, disabled, 
+<img [src]="abc" alt="" width="200">
+<button [disabled]="abc === '../assets/img1.jpg'">Hello</button>
+
+***********************
+
+table =<table>
+
+    <tr>
+        <th>Frist Name </th>
+        <th>Last Name</th>
+        <th>Designation</th>
+        <th>salary</th>
+    </tr>
+
+counting=let student of Studentdata; let i= index"
+
+    <tr *ngFor="let emp of empData">
+        <td>{{emp.fristName}}</td>
+        <td>{{emp.lastName}}</td>
+        <td>{{emp.Designation}}</td>
+        <td>{{emp.salary}}</td>
+    </tr>
+
+</table>
+
+classes = 
+interfaces
+access modifier
+contructor
+
+function
+error checking/ debugging
+
+installing in packages
+dependency injection
+compilation
+bulild app
+
+scss
+
+forms
