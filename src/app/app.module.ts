@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { ServicesComponent } from './services/services.component';
-import { HeaderComponent } from './header/header.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { HomeComponent } from './components/home/home.component';
+import { ServicesComponent } from './components/services/services.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { HeaderComponent } from './header/header.component';
     AboutComponent,
     ContactComponent,
     ServicesComponent,
-    HeaderComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
