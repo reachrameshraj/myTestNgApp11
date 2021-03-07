@@ -1,0 +1,548 @@
+Introduction
+Installation
+creating app "creating 'ng new [projectName]'"
+
+variable
+data binding
+templates
+template expression: -> {{title}}
+Angular life cycle hooks: -> ngOnInit, ngOnViewInit....
+import/ export
+
+components: -> ng g c [componentName]
+modules: -> ng g m [moduleName]
+services: -> ng g s [serviceName]
+directives: -> ng g d [deractiveName]
+<h2>{{ date | date:'short'}}</h2>
+pipes: -> ng g p [pipeName] : 
+
+routing :   1. create component
+            2. configure path in app.routing.module.ts
+            3. create <a> tag with routerLink: Ex <a routerLink="home">Home</a> 
+
+path:men={"home"compunent:homecompunent} 
+
+if : <div *ngIf="a == b"></div> 
+<else ee;<ng-tamplate></ng-tamplate>
+
+for:<div *ngFor="let e of [1,2,3,4,5,6,]"> {{e}}</div>
+ng-template
+
+switch =<div [ngSwitch]="userRole">
+    <button *ngSwitchCase="'admin'">Full Access</button>
+    <button *ngSwitchCase="'user'">Restricted Access</button>
+    <button *ngSwitchDefault>No Access</button>
+</div>
+
+****************************************
+ngClass :
+<div [ngClass]="{'big' : boxSize === 'big', 'small': boxSize=== 'small', 'extra-small': boxSize === 'extra-small'}">hello</div>
+
+<div class="box {{userRole === 'admin' ? 'green-box' : userRole === 'agent' ? 'blue-box' : userRole === 'user' ? 'yellow-box' : 'red-box'}}">Hello World</div>
+
+
+if(userRole === 'admin'){
+    class = 'green-box'
+}else if(userRole === 'agent'){
+    class = 'blue-box'
+}else if(userRole === 'user'){
+    class = 'yellow-box'
+}else
+    class = 'red-box'  
+}
+
+
+********************************
+
+ngStyle :
+
+<div class="box" [ngStyle]="{color:'red', fontSize: '25px'}">Hello World</div>
+<div class="box" [style.color]="userRole === 'admin' ? 'red' : userRole === 'user' ? 'yellow' : 'blue'">Hello World</div>
+
+***********************
+
+Other property binding: img:src, disabled, 
+<img [src]="abc" alt="" width="200">
+<button [disabled]="abc === '../assets/img1.jpg'">Hello</button>
+
+***********************
+
+table : =<table>
+
+    <tr>
+        <th>Frist Name </th>
+        <th>Last Name</th>
+        <th>Designation</th>
+        <th>salary</th>
+    </tr>
+
+counting:let student of Studentdata; let i= index"
+
+    <tr *ngFor="let emp of empData">
+        <td>{{emp.fristName}}</td>
+        <td>{{emp.lastName}}</td>
+        <td>{{emp.Designation}}</td>
+        <td>{{emp.salary}}</td>
+    </tr>
+     <tr *ngFor="let emp of empData, let i=index" class="box"
+        [ngStyle]="{backgroundColor: emp.salary >=15000 ? 'green' :  emp.salary > 10000 ? 'yellow' : emp.salary < 10000 ? 'red' :''}">
+        <td>{{i+1}}</td>
+        <td>{{emp.fristName}}</td>
+        <td>{{emp.lastName}}</td>
+        <td>{{emp.Designation}}</td>
+        <td class="box">{{emp.salary}}</td>
+
+constructor( private sharedSevice:SharedService) {}
+
+ngOnInit(): void {
+
+   console.log(this.sharedSevice.empData);}
+   </table>
+
+
+services
+access modifier :private, public, protected
+
+events : click, change, focus, blur, ngModelChange, 
+
+<button (click)="showData()">Add</button> 
+        showData() {
+      console.log('hello World')
+      }
+getId(a,b){
+      // let a=15
+      // let b=5
+const data=a+b
+
+        console.log(data);
+      
+ count: number = 0;
+            plus() {
+            if (this.count < 10) this.count = this.count + 1; }
+                
+  minus() {
+
+        if (this.count > 0) this.count = this.count - 1;}
+
+        
+        {change, focus, blur, ngModelChange,}
+
+        <input type="text"(ngModelChange)="modelChanging()" [(ngModel)]="firstName" (focus)="directiveFocus()" (blur)="outDoorCliking()">
+
+        <button (click)="showData($event)">Add</button> 
+        <button (click)="greeting='welcome vishwa'">Add</button> 
+
+        {{greeting}}
+
+
+
+http: 
+
+
+forms :<nav class="navbar navbar-expand-lg navbar-light bg-primary justify-content-between ">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+      <div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="link">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="posts">Posts</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Registration</h1>
+      <form #regForm="ngForm" (ngSubmit)="onSubmitRegForm(regForm)">
+        <div class="mb-2 mt-2">
+          <label>First Name</label>
+          <input type="text" class="form-control"
+            [ngClass]="{'is-invalid': (regForm.submitted && fn.invalid) || (fn.dirty && fn.invalid)}" #fn="ngModel"
+            name="firstName" [(ngModel)]="firstName" placeholder="First Name" required>
+          <div class="invalid-feedback d-block" *ngIf="(regForm.submitted && fn.invalid) || (fn.dirty && fn.invalid)">
+            This field is Required</div>
+        </div>
+        <div class="mb-2">
+          <label>Last Name</label>
+          <input type="text" class="form-control" #ln="ngModel" name="lastName" [(ngModel)]="lastName"
+            placeholder="Last Name"
+            [ngClass]="{'is-invalid':(regForm.submitted && ln.invalid) || (ln.dirty && ln.invalid)}" required>
+          <div class="invalid-feedback d-block" *ngIf="(regForm.submitted && ln.invalid) || (ln.dirty && ln.invalid)">
+            This field is Required</div>
+        </div>
+        <div class="mb-2">
+          <label>Age</label>
+          <input type="text" class="form-control" #ag="ngModel" name="age" [(ngModel)]="age" placeholder="Age"
+            [ngClass]="{'is-invalid':(regForm.submitted && ag.invalid) || (ag.dirty && ag.invalid)}" required>
+          <div class="invalid-feedback d-block" *ngIf="(regForm.submitted && ag.invalid) || (ag.dirty && ag.invalid)">
+            This field is Required</div>
+        </div>
+        <div class="mb-2">
+          <label>Email</label>
+          <input type="text" class="form-control" #eml="ngModel" name="email" [(ngModel)]="email" placeholder="Email"
+            [ngClass]="{'is-invalid':(regForm.submitted && eml.invalid) || (eml.dirty && eml.invalid)}" required>
+          <div class="invalid-feedback d-block"
+            *ngIf="(regForm.submitted && eml.invalid) || (eml.dirty && eml.invalid)">This field is Required</div>
+        </div>
+
+        <div class="mt-4">
+          <input type="reset" value="Reset" class="btn btn-primary mr-3">
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+
+reactive form validation : <nav class="navbar navbar-expand-lg navbar-light bg-primary justify-content-between ">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+      <div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="link">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="posts">Posts</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Registration</h1>
+      <!--  <form #regForm="ngForm" (ngSubmit)="onSubmitRegForm(regForm)">
+        <div class="mb-2 mt-2">
+          <label>First Name</label>
+          <input type="text" class="form-control"
+            [ngClass]="{'is-invalid': (regForm.submitted && fn.invalid) || (fn.dirty && fn.invalid), 'is-valid': (regForm.submitted && fn.valid) || (fn.dirty && fn.valid)}" #fn="ngModel"
+            name="firstName" [(ngModel)]="firstName" placeholder="First Name" required>
+          <div class="invalid-feedback d-block" *ngIf="(regForm.submitted && fn.invalid) || (fn.dirty && fn.invalid)">
+            This field is Required</div>
+        </div>
+
+        <div class="mb-2">
+          <label>Last Name</label>
+          <input type="text" class="form-control" #ln="ngModel" name="lastName" [(ngModel)]="lastName"
+            placeholder="Last Name"
+            [ngClass]="{'is-invalid':(regForm.submitted && ln.invalid) || (ln.dirty && ln.invalid)}" required>
+          <div class="invalid-feedback d-block" *ngIf="(regForm.submitted && ln.invalid) || (ln.dirty && ln.invalid)">
+            This field is Required</div>
+        </div>
+        <div class="mb-2">
+          <label>Age</label>
+          <input type="number" class="form-control" #ag="ngModel" name="age" [(ngModel)]="age" placeholder="Age"
+            [ngClass]="{'is-invalid':(regForm.submitted && ag.invalid) || (ag.dirty && ag.invalid)}" pattern="^\d{2}$"
+            required>
+          <div class="invalid-feedback d-block" *ngIf="(regForm.submitted && ag.invalid) || (ag.dirty && ag.invalid)">
+            <div *ngIf="ag.errors.required">This field is Required</div>
+            <div *ngIf="ag.errors.pattern">Invalid Age</div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <label>Email</label>
+          <input type="text" class="form-control" #eml="ngModel" name="email" [(ngModel)]="email" placeholder="Email"
+            [ngClass]="{'is-invalid':(regForm.submitted && eml.invalid) || (eml.dirty && eml.invalid)}" required email>
+          <div class="invalid-feedback d-block"
+            *ngIf="(regForm.submitted && eml.invalid) || (eml.dirty && eml.invalid)">
+            <div *ngIf="eml.errors.required">This field is Required</div>
+            <div *ngIf="eml.errors.email">Invalid Email</div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <label>Country</label>
+          <input type="text" class="form-control" #cntry="ngModel" name="country" [(ngModel)]="country" placeholder="Country"
+            [ngClass]="{'is-invalid':(regForm.submitted && cntry.invalid) || (cntry.dirty && cntry.invalid)}" required readonly>
+          <div class="invalid-feedback d-block"
+            *ngIf="(regForm.submitted && cntry.invalid) || (cntry.dirty && cntry.invalid)">
+            This field is Required
+          </div>
+        </div>
+        <div class="mb-2">
+          <label>Email</label>
+          <select class="form-control" name="color" [(ngModel)]="color">
+            <option value="">Select Color</option>
+            <option>red</option>
+            <option>green</option>
+            <option>blue</option>
+          </select>
+
+        </div>
+
+        <div class="mt-4">
+          <input type="reset" value="Reset" class="btn btn-primary mr-3">
+          <input type="submit" [disabled]="regForm.form.invalid" value="Submit" class="btn btn-primary">
+        </div>
+      </form> -->
+
+      <!-- <div>{{regForm.value | json}}</div> -->
+
+
+      <!-- Reactive form -->
+      <form [formGroup]="regForm" (ngSubmit)="onSubmitRegForm()">
+
+        <div class="mb-2 mt-2">
+          <label>First Name</label>
+          <input type="text" class="form-control" formControlName="firstName" placeholder="First Name"
+            [ngClass]="{'is-invalid':(formSubmitted && regForm.controls.firstName.invalid) || (regForm.controls.firstName.dirty && regForm.controls.firstName.invalid)}">
+
+          <div class="invalid-feedback d-block"
+            *ngIf="(formSubmitted && regForm.controls.firstName.invalid) || (regForm.controls.firstName.dirty && regForm.controls.firstName.invalid)">
+            This field is Required
+          </div>
+        </div>
+
+        <div class="mb-2 mt-2">
+          <label>Last Name</label>
+          <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name"
+            [ngClass]="{'is-invalid':(formSubmitted && regForm.controls.lastName.invalid) || (regForm.controls.lastName.dirty && regForm.controls.lastName.invalid)}">
+
+          <div class="invalid-feedback d-block"
+            *ngIf="(formSubmitted && regForm.controls.lastName.invalid) || (regForm.controls.lastName.dirty && regForm.controls.lastName.invalid)">
+            This field is Required
+          </div>
+        </div>
+
+        <div class="mb-2 mt-2">
+          <label>Email</label>
+          <input type="text" class="form-control" formControlName="email" placeholder="Email"
+          [ngClass]="{'is-invalid':(formSubmitted && regForm.controls.email.invalid) || (regForm.controls.email.dirty && regForm.controls.email.invalid)}" email>
+          
+
+          <div class="invalid-feedback d-block"
+          *ngIf="(formSubmitted && regForm.controls.email.invalid) || (regForm.controls.email.dirty && regForm.controls.email.invalid)">
+          This field is Required
+        </div>
+        </div>
+
+        <div class="mt-4">
+          <input type="Reset" value="reset" class="btn btn-primary mr-3">
+          <input type="submit" [disabled]="regForm.invalid" value="submit" class="btn btn-primary">
+        </div>
+      </form>
+
+      <!-- <div>{{regForm.value | json}}</div>
+      <div>{{regForm.valid | json}}</div> -->
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+
+reactive form app component ts :formBuilder = new FormBuilder();
+
+  regForm = this.formBuilder.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    email: ['', Validators.required],
+  })
+  formSubmitted: boolean;
+
+
+ngOnInit(){
+}
+  onSubmitRegForm() {
+    this.formSubmitted = true;
+    console.log(this.regForm)
+  }
+
+installing in packages :
+dependency injection :
+sharing data acrass compunent and models :
+compilation :
+build app :
+
+classes :
+interfaces :
+scss :
+contructor :
+
+function :
+error checking/ debugging 
+
+
+
+<ul class="m-0 p-0">
+                <li *ngFor="let post of posts" class="card mb-3 shadow-sm p-2">
+                 <div class="d-flex align-items-center">
+
+                 <div class="px-2">{{post.id}}.</div>
+
+                <div class="px-2 overflow-auto">
+                <a routerLink="/posts/{{post.id}}">
+                    <h2>{{post.title}}</h2>
+                </a>
+                <div class="text-truncate">{{post.description}}</div>
+
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+
+
+
+
+
+
+
+post-detail.component-ts
+ title: string = '';
+  description: string = '';
+  posts: any;
+  url:string =  "";
+  createdDate: any;
+  author: any;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private sharedService: SharedService
+  ) {}
+
+  ngOnInit(): void {
+    this.posts = this.sharedService.posts;
+
+    this.activatedRoute.paramMap.subscribe((params) => {
+      let currentId = parseInt(params.get('id'));
+      let index = this.posts.findIndex((post) => post.postId === currentId);
+
+      this.title = this.posts[index].title;
+      this.description = this.posts[index].description;
+      this.url = this.posts[index].url;
+      this.createdDate = this.posts[index].createdDate;
+      this.author = this.posts[index].author;
+    });
+
+    
+html-
+    <div class="container-fluid">
+    <h1>{{title}}</h1>
+     <div class="small">{{createdDate}},
+        {{author}}</div>
+   
+            <img [src]="url" alt="#" class="py-3">
+            <div>{{description}}</div>
+
+        </div>
+
+
+
+
+cmpnt-html:
+
+<div class="container-fluid">
+    <h1>users</h1>
+    <ul class="list-unstyled">
+        <li *ngFor="let user of users" class="shadow-sm">
+            <div class="d-flex align-items-center px-3">
+                <div class="pr-3">{{user.userId}}</div>
+                <div class="img-container" [style.background-image]="'url('+user.url +')'"> </div>
+
+                <!-- <img [src]="user.url" class="rounded-circle" alt="#"> -->
+                <div class="  m-2 p-2"><a routerLink="/posts/{{user.userId}}">
+                        <div class="d-flex">
+                            <h2>
+                                {{user.firstName | titlecase}}
+                                {{user.lastName |titlecase}}
+                            </h2>
+                        </div>
+                    </a>
+                    <div>{{user.phoneNumber}}</div>
+                    <div>{{user.emailAddress}}</div>
+
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+posts-d-cmpnt-ts:
+
+this.users = this.sharedService.users;
+
+    this.activatedRoute.paramMap.subscribe((params) => {
+      let currentId = parseInt(params.get('id'));
+      let index = this.users.findIndex((user) => user.userId === currentId);
+
+      this.userId = this.users[index].userId;
+      this.firstName = this.users[index].firstName;
+      this.lastName = this.users[index].lastName;
+      this.phoneNumber = this.users[index].phoneNumber;
+      this.emailAddress = this.users[index].emailAddress;
+      this.url = this.users[index].url;
+    });
+  }
+}
+
+
+
+http create:
+
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-posts-detail',
+  templateUrl: './posts-detail.component.html',
+  styleUrls: ['./posts-detail.component.scss']
+})
+export class PostsDetailComponent implements OnInit {
+  url: string;
+  images: any = [];
+  
+  httpHeaders: any = { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' };
+  constructor(private httpClien:HttpClient, private activeRouter:ActivatedRoute ) { }
+
+  ngOnInit(): void {
+    this.activeRouter.paramMap.subscribe(params =>{
+      let url = params.get('url');
+      this.httpClien.post("http://christkinginstitution.com/api/getGalleryDetail.php", {url:url},{headers:this.httpHeaders}).subscribe(response =>{
+         this.images = response
+      })
+    })
+  }
+
+}
+ html detail c ts:
+ <div class="container">
+    <h2>posts-detail works</h2>
+    <div class="row ">
+        <div *ngFor="let image of images" class="d-flex    col-md-3 shadow-sm">
+            <div class="overflow-hidden mb-3">
+                <img [src]="'http://christkinginstitution.com/assets/images/gallery/' + image.img"
+                    class="img-fluidmb-4 ">
+            </div>
+        </div>
+    </div>
+</div>
+

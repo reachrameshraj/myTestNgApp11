@@ -1,0 +1,51 @@
+<h1>{{title}}</h1>
+
+<a routerLink="home">Home</a> |
+<a routerLink="about">About</a> |
+<a routerLink="contact">Contact</a> |
+<a routerLink="services">Services</a> |
+
+<router-outlet></router-outlet>
+<hr>
+<table>
+    <tr>
+        <th>slnum</th>
+        <th>Frist Name </th>
+        <th>Last Name</th>
+        <th>Designation</th>
+        <th>salary</th>
+    </tr>
+
+    <tr *ngFor="let emp of empData, let i=index">
+        <td>{{i+1}}</td>
+        <td>{{emp.fristName}}</td>
+        <td>{{emp.lastName}}</td>
+        <td>{{emp.Designation}}</td>
+        <td>{{emp.salary}}</td>
+    </tr>
+
+</table>
+<br>
+
+<table>
+
+    <tr  class="box" [ngStyle]="{color:'orange'}">
+        <th >slnum</th>
+        <th>StudentName</th>
+        <th>Class</th>
+        <th>Roomnum</th>
+        <th>Rolenum</th>
+
+    </tr>
+
+    <tr *ngFor="let student of Studentdata; let i= index">
+        <td>{{i+1}}</td>
+        <td>{{student.studentName}}</td>
+        <td class="box"
+            [ngStyle]="{backgroundColor: student.class==='10th' ? 'red': student.class==='9th' ? 'blue' :student.class==='8th' ? 'yellow' :  student.class==='7th' ? 'pink' :''}">
+            {{student.class}}
+        </td>
+        <td>{{student.roomNum}}</td>
+        <td>{{student.RoleNum}}</td>
+    </tr>
+</table>

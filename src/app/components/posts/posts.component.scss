@@ -1,0 +1,15 @@
+img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.img-container {
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  background-size: cover;
+}
+
+ul li:hover{
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}

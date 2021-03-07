@@ -1,0 +1,19 @@
+<div class="container">
+    <h1 class="py-3">Galleris</h1>
+    <div class=" row justify-content align-items-center">
+        <div class="col-md-3 mb-4" *ngFor="let image of images">
+            <div class="card  shadow-sm">
+                <div class="overflow-hidden w-100">
+                    <img [src]="'http://christkinginstitution.com/assets/images/gallery/' + image.img" class="card"
+                        alt="...">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{url | titlecase}}</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's
+                        content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

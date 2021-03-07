@@ -1,0 +1,20 @@
+<div>
+    <ul>
+        <h1>user works</h1>
+        <li *ngFor="let user of userss" class="shadow-lg list-unstyled">
+            <div>{{user.id}}
+                <div><a routerLink="/users/{{user.id}}">
+                        <h2> {{user.name}}</h2>
+                    </a>
+                    <div>
+                        {{user.username}}
+                        <div>
+                            {{user.email}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>
