@@ -1,0 +1,7 @@
+<div class="container">
+    <form [formGroup]="postDetail" (ngSubmit)="onSubmitDetail()">
+        <input type="text" formControlName="title">
+        <input type="text" formControlName="body">
+        <input type="submit" class="btn btn-primary">
+    </form>
+</div>

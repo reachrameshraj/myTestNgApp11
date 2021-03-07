@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>album</h1>
+    <ul class="px-2 list-unstyled">
+        <li *ngFor="let al of album" class="shadow-sm">
+            <div>
+                {{al.userId}}
+                <div class="d-flex m-2">
+
+                    {{al.id}},
+
+                    <a routerLink="/album/{{al.url}}">
+                        <div>
+                            <p>{{al.title}}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

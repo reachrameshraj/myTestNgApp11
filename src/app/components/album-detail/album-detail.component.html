@@ -1,0 +1,10 @@
+<div class="container">
+    <h1 class="py-3">Galleris</h1>
+    <div class=" row ">
+        <div class="col-md-3 mb-4 shadow-sm d-flex justify-content-center align-items-center w-100" *ngFor="let image of images">
+
+            <img [src]="'http://christkinginstitution.com/assets/images/gallery/' + image.img" class="img-fluid overflow-hidden w-100">
+
+        </div>
+    </div>
+</div>
